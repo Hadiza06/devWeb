@@ -1,20 +1,34 @@
-# 🌐  Application web PHP avec gestion d'utilisateurs
+# 📚 UniLearn — Plateforme e-learning (PHP/MySQL)
 
-Application web développée en **PHP** avec une base de données **MySQL**, intégrant un système complet d'authentification et de gestion des utilisateurs. L'interface utilise **Bootstrap 5** et **Font Awesome** pour le rendu visuel.
+Application web e-learning développée en **PHP** avec une base de données **MySQL**, dans le cadre d'un projet de développement web étudiant. UniLearn propose un environnement complet pour les étudiants et enseignants, avec gestion des cours, quiz, messagerie et forum, le tout sécurisé par un système d'authentification par rôle.
+
+---
+
+## 📸 Aperçu
+
+### Page de connexion / inscription
+<img width="2188" height="1120" alt="Capture d&#39;écran 2026-05-02 151209" src="https://github.com/user-attachments/assets/93492c3b-5229-40c7-9f46-cf0ebd3af24e" />
+
+
+### Tableau de bord
+<img width="752" height="774" alt="Capture d&#39;écran 2026-05-02 151240" src="https://github.com/user-attachments/assets/dda87029-28db-44fa-a25f-4a553d253e4e" />
+
 
 ---
 
 ## ✨ Fonctionnalités
 
-- **Inscription** avec validation des champs (username, nom, email, téléphone, genre, mot de passe)
-- **Connexion** par email et mot de passe avec gestion de session
-- **Déconnexion** sécurisée
-- **Page d'accueil** protégée, accessible uniquement aux utilisateurs connectés
-- **Panneau d'administration** — liste des utilisateurs avec indicateur de rôle (admin / user)
-- **Suppression d'utilisateur** réservée aux administrateurs
-- **Contrôle d'accès par rôle** : champ `access` (0 = user, 1 = admin)
-- Mots de passe **hashés** avec `password_hash()` (PHP)
-- Requêtes préparées **PDO** pour se protéger des injections SQL
+- **Authentification** par rôle (étudiant, enseignant, admin) avec inscription et connexion sécurisées
+- **Cours** — consultation et gestion des contenus pédagogiques
+- **Quiz** — évaluation des connaissances
+- **Résultats** — suivi des performances par étudiant
+- **Messagerie** — communication entre utilisateurs
+- **Forum** — espace d'échange et de discussion
+- **Annonces** — diffusion d'informations importantes
+- **Déconnexion** sécurisée avec destruction de session
+- Mots de passe **hashés** avec `password_hash()`
+- Requêtes **PDO préparées** contre les injections SQL
+- Interface **responsive** avec Bootstrap 5 et Font Awesome
 
 ---
 
@@ -23,12 +37,12 @@ Application web développée en **PHP** avec une base de données **MySQL**, int
 ```
 devWeb/
 ├── index.php        # Page de connexion
-├── register.php     # Page d'inscription
-├── home.php         # Page d'accueil (utilisateur connecté)
-├── users.php        # Tableau de bord admin — liste des utilisateurs
+├── register.php     # Page d'inscription avec choix de rôle
+├── home.php         # Page d'accueil après connexion
+├── users.php        # Panneau admin — liste des utilisateurs
 ├── delete_user.php  # Suppression d'un utilisateur
 ├── logout.php       # Déconnexion
-├── navbar.php       # Barre de navigation partagée
+├── navbar.php       # Barre de navigation (Cours, Quiz, Résultats, Messages, Forum, Annonces)
 ├── db.php           # Connexion PDO à la base de données
 ├── link.php         # Inclusion des CDN (Bootstrap, Font Awesome)
 └── users.sql        # Script SQL de création de la table users
@@ -42,16 +56,16 @@ Base de données : `gestionstock`
 
 **Table `users`**
 
-| Colonne    | Type          | Description                     |
-|------------|---------------|---------------------------------|
-| `id`       | INT (PK, AI)  | Identifiant unique               |
-| `name`     | VARCHAR(50)   | Nom complet                      |
-| `username` | VARCHAR(50)   | Nom d'utilisateur                |
-| `mail`     | VARCHAR(100)  | Adresse email (unique)           |
-| `phone`    | VARCHAR(20)   | Numéro de téléphone              |
-| `mdp`      | VARCHAR(255)  | Mot de passe haché               |
-| `sexe`     | VARCHAR(20)   | Genre (homme / femme / autre)    |
-| `access`   | INT(2)        | Niveau d'accès : 0=user, 1=admin |
+| Colonne    | Type          | Description                      |
+|------------|---------------|----------------------------------|
+| `id`       | INT (PK, AI)  | Identifiant unique                |
+| `name`     | VARCHAR(50)   | Nom complet                       |
+| `username` | VARCHAR(50)   | Nom d'utilisateur                 |
+| `mail`     | VARCHAR(100)  | Adresse email (unique)            |
+| `phone`    | VARCHAR(20)   | Numéro de téléphone               |
+| `mdp`      | VARCHAR(255)  | Mot de passe haché                |
+| `sexe`     | VARCHAR(20)   | Genre (homme / femme / autre)     |
+| `access`   | INT(2)        | Niveau d'accès : 0=user, 1=admin  |
 
 ---
 
@@ -103,7 +117,19 @@ http://localhost/devWeb/index.php
 
 ## 🔐 Accès administrateur
 
-Un compte admin de test est inclus dans `users.sql` (access = 1). Il vous permet d'accéder à la page `users.php` et de gérer les utilisateurs. Changez le mot de passe par défaut après installation.
+Un compte admin de test est inclus dans `users.sql` (access = 1). Il permet d'accéder à la page `users.php` et de gérer les utilisateurs. Changez le mot de passe par défaut après installation.
+
+---
+
+## 🛠️ Technologies utilisées
+
+| Technologie   | Rôle                              |
+|---------------|-----------------------------------|
+| PHP 8         | Backend, sessions, logique métier |
+| MySQL         | Base de données                   |
+| PDO           | Requêtes préparées sécurisées     |
+| Bootstrap 5   | Interface responsive              |
+| Font Awesome  | Icônes de navigation              |
 
 ---
 
