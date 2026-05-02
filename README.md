@@ -1,4 +1,4 @@
-# 🌐 devWeb — Application web PHP avec gestion d'utilisateurs
+# 🌐  Application web PHP avec gestion d'utilisateurs
 
 Application web développée en **PHP** avec une base de données **MySQL**, intégrant un système complet d'authentification et de gestion des utilisateurs. L'interface utilise **Bootstrap 5** et **Font Awesome** pour le rendu visuel.
 
